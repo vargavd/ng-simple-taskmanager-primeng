@@ -1,0 +1,21 @@
+<p-toolbar>
+  <div class="p-toolbar-group-left">
+    <p-button styleClass="mr-2 p-button-link" icon="pi pi-globe" label="Home"></p-button>
+
+    <p-button styleClass="mr-2 p-button-link" icon="pi pi-table" label="Projects"></p-button>
+    
+    <p-button styleClass="mr-2 p-button-link" icon="pi pi-list" label="Tasks"></p-button>
+
+    
+  </div>
+
+  <div class="p-toolbar-group-right">
+    <p-splitButton label="Daniel" icon="pi pi-user" styleClass="p-button-secondary" (onClick)="loggedIn = !loggedIn" [model]="userMenu"></p-splitButton>
+  </div>
+</p-toolbar>
+
+<h1>Example PrimeNG project</h1>
+
+<p-button [label]="buttonLabel"></p-button>
+
+<p>{{ loggedIn }}</p>
