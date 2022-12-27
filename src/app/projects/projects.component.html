@@ -1,0 +1,29 @@
+<h1>Projects</h1>
+
+<!-- <p *ngFor="let project of projects">{{ project.title }}</p> -->
+<div class="projects">
+  <p-card 
+    *ngFor="let project of projects" 
+    class="project" 
+    styleClass="p-card-shadow"
+  >
+    <ng-template pTemplate="header">
+        <img alt="Card" src="../../assets/imgs/card-bc.png">
+    </ng-template>
+
+    <ng-template pTemplate="title">
+      {{ project.title }}
+    </ng-template>
+
+    {{ project.description }}
+
+    <ng-template pTemplate="footer">
+      <p-tag
+        *ngFor="let tag of project.tags"
+        [value]="tag"
+        severity="info"
+        styleClass="m-1"
+      ></p-tag>
+    </ng-template>
+  </p-card>
+</div>

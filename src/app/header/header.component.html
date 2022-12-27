@@ -1,0 +1,43 @@
+<p-toolbar>
+  <div class="p-toolbar-group-left">
+    <p-button
+      styleClass="mr-2 p-button-link"
+      icon="pi pi-globe"
+      label="Home"
+      (onClick)="clickOnLink('/')">
+    </p-button>
+
+    <p-button
+      styleClass="mr-2 p-button-link"
+      icon="pi pi-table"
+      label="Projects"
+      (onClick)="clickOnLink('/projects')">
+    </p-button>
+    
+    <p-button
+      styleClass="p-button-link"
+      icon="pi pi-list"
+      label="Tasks"
+      (onClick)="clickOnLink('/tasks')">
+    </p-button>
+
+    
+  </div>
+
+  <div class="p-toolbar-group-right">
+    <p-button 
+      styleClass="mr-3 p-button-secondary" 
+      icon="pi pi-sign-in" 
+      label="Login"
+      *ngIf="!loggedIn"
+      (onClick)="loggedIn = true">
+    </p-button>
+
+    <p-splitButton 
+      label="Daniel" 
+      icon="pi pi-user" 
+      styleClass="mr-3 p-button-secondary" 
+      *ngIf="loggedIn"
+      [model]="userMenu"></p-splitButton>
+  </div>
+</p-toolbar>
