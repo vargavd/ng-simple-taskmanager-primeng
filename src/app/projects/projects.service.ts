@@ -10,7 +10,11 @@ export class ProjectService {
     this.projects = [...Projects];
   }
 
-  getProjects() {
+  getProjects(numberOfProjects?: number) {
+    if (numberOfProjects != null) {
+      return this.projects.slice(0, numberOfProjects);
+    }
+
     return this.projects.slice();
   }
 }

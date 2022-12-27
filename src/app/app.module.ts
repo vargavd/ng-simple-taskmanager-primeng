@@ -19,6 +19,7 @@ import { ProjectsComponent } from './projects/projects.component';
 // CUSTOM SERVICES
 import { ProjectService } from './projects/projects.service';
 import { HomeComponent } from './home/home.component';
+import { ProjectListItemComponent } from './projects/project-list-item/project-list-item.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     HeaderComponent,
     ProjectsComponent,
-    HomeComponent
+    HomeComponent,
+    ProjectListItemComponent
   ],
   imports: [
     BrowserModule,

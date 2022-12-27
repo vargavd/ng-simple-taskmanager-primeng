@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+
+  p-card {
+    display: flex;
+    align-items: stretch;
+
+    img {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+  }
+}
