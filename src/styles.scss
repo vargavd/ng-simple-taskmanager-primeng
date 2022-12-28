@@ -16,3 +16,31 @@
     }
   }
 }
+
+
+// prime style overwrites
+a.p-button {
+  text-decoration: none;
+  
+  .pi {
+    margin-right: 0.5rem;
+  }
+
+  &.p-button-primary {
+    &:hover {
+      background: darken(#8dd0ff, 10);
+      border: 1px solid darken(#8dd0ff, 10);
+    }
+  }
+
+  &.p-button-link {
+  
+    &:focus {
+      box-shadow: none;
+    }
+  
+    &:hover, &.active {
+      color: darken(#8dd0ff, 20);
+    }
+  }
+}
