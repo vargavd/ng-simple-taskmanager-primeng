@@ -1,0 +1,31 @@
+<p-card 
+  class="task" 
+  styleClass="p-card-shadow"
+  *ngFor="let task of tasks"
+  [header]="task.title"
+>
+  Reprehenderit quis duis dolor magna dolor esse amet. Eiusmod dolor est anim ad.
+
+  <div class="task-property">
+    <label class="font-bold">Project: </label> 
+    <div>Project Title 12</div>
+  </div>
+
+  <div class="task-property">
+    <label class="font-bold">Time tracked: </label> 
+    <div>{{ task.getTimeString() }}</div>
+  </div>
+
+  <div class="task-property">
+    <label class="font-bold">Status: </label> 
+    <div>STARTED</div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <p-tag
+      value="Lorem"
+      severity="info"
+      styleClass="m-1"
+    ></p-tag>
+  </ng-template>
+</p-card>

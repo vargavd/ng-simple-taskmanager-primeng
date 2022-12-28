@@ -1,6 +1,6 @@
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 
-import { Projects, IProject } from "../sample/projects";
+import { Projects, IProject } from "../helper/data";
 
 @Injectable()
 export class ProjectService {
@@ -12,9 +12,9 @@ export class ProjectService {
 
   getProjects(numberOfProjects?: number) {
     if (numberOfProjects != null) {
-      return this.projects.slice(0, numberOfProjects);
+      return this.projects.filter((_, i) => i < numberOfProjects);
     }
 
-    return this.projects.slice();
+    return this.projects;
   }
 }

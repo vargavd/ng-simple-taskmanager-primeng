@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IProject } from 'src/app/sample/projects';
+import { IProject } from 'src/app/helper/data';
 
 @Component({
   selector: 'app-project-list-item',

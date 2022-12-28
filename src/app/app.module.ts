@@ -17,11 +17,13 @@ import { DividerModule as PrimeNG_DividerModule } from 'primeng/divider';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { HomeComponent } from './home/home.component';
+import { ProjectListItemComponent } from './projects/project-list-item/project-list-item.component';
 
 // CUSTOM SERVICES
 import { ProjectService } from './projects/projects.service';
-import { HomeComponent } from './home/home.component';
-import { ProjectListItemComponent } from './projects/project-list-item/project-list-item.component';
+import { TasksService } from './tasks/tasks.service';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { ProjectListItemComponent } from './projects/project-list-item/project-l
     HeaderComponent,
     ProjectsComponent,
     HomeComponent,
-    ProjectListItemComponent
+    ProjectListItemComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
@@ -46,10 +49,11 @@ import { ProjectListItemComponent } from './projects/project-list-item/project-l
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'projects', component: ProjectsComponent }
+      { path: 'projects', component: ProjectsComponent },
+      { path: 'tasks', component: TasksComponent }
     ])
   ],
-  providers: [ProjectService],
+  providers: [ProjectService, TasksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

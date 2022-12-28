@@ -1,6 +1,6 @@
 // angular imports
 import { Component, OnInit } from '@angular/core';
-import { IProject } from '../sample/projects';
+import { IProject } from '../helper/data';
 
 // services
 import { ProjectService } from './projects.service';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../projects/projects.service';
-import { IProject } from '../sample/projects';
+import { IProject } from '../helper/data';
 
 @Component({
   selector: 'app-home',
