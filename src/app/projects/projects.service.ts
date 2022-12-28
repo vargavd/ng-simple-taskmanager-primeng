@@ -1,13 +1,13 @@
 import { Injectable, OnInit } from "@angular/core";
 
-import { Projects, IProject } from "../sample/projects";
+import { getProjects, IProject } from "../sample/projects";
 
 @Injectable()
 export class ProjectService {
   projects: IProject[];
 
   constructor() {
-    this.projects = [...Projects];
+    this.projects = getProjects();
   }
 
   getProjects(numberOfProjects?: number) {
