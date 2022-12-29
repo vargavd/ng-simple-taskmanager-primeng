@@ -237,11 +237,11 @@ export function getTasks(): ITask[] {
 
   for (let i = 0; i < 10 + getRandomInteger(10); i++) {
     tasks.push({
-      id: i,
-      title: `Task Title ${i}`,
+      id: i + 1,
+      title: `Task Title ${i + 1}`,
       description: loremGenerator.generateSentences(4),
       time_tracked_in_minutes: (getRandomInteger(4, true) * 60) + ((getRandomInteger(4, true) * 15)),
-      status: Object.values(TASK_STATUS)[getRandomInteger(3, true)],
+      status: Object.values(TASK_STATUS)[getRandomInteger(3)],
       projectId: Projects[getRandomInteger(Projects.length)].id,
 
       getTimeString() {

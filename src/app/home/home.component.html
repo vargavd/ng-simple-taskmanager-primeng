@@ -6,9 +6,10 @@
 
 <h2>Projects</h2>
 
-<div class="projects">
+<div class="projects card-list">
   <app-project-list-item 
     *ngFor="let project of projects"
     [project]="project"
+    class="list-item"
   ></app-project-list-item>
 </div>

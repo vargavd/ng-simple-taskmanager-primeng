@@ -24,6 +24,8 @@ import { ProjectListItemComponent } from './projects/project-list-item/project-l
 // CUSTOM SERVICES
 import { ProjectService } from './projects/projects.service';
 import { TasksService } from './tasks/tasks.service';
+import { TaskListItemComponent } from './tasks/task-list-item/task-list-item.component';
+import { StatusIndicatorComponent } from './common/status-indicator/status-indicator.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { TasksService } from './tasks/tasks.service';
     ProjectsComponent,
     HomeComponent,
     ProjectListItemComponent,
-    TasksComponent
+    TasksComponent,
+    TaskListItemComponent,
+    StatusIndicatorComponent
   ],
   imports: [
     BrowserModule,

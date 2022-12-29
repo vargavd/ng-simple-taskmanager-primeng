@@ -1,0 +1,40 @@
+<p-card 
+  class="task relative" 
+  styleClass="p-card-shadow"
+  [header]="task.title"
+>
+  <p-button 
+    icon="pi pi-pencil"
+    class="edit-task pl-2"
+    styleClass="p-button-sm">
+  </p-button>
+
+  <ng-template pTemplate="content">
+    {{ task.description }}
+
+    <div class="task-property pt-1 mt-3 text-xs">
+      <label class="font-bold">Project: </label> 
+      <div>Project Title 12</div>
+    </div>
+
+    <div class="task-property pt-1 mt-2 text-xs">
+      <label class="font-bold">Time tracked: </label> 
+      <div>{{ task.getTimeString() }}</div>
+    </div>
+
+    <div class="task-property pt-1 mt-2 text-xs">
+      <label class="font-bold">Status: </label> 
+      <div>
+        <app-status-indicator [status]="task.status"></app-status-indicator>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-tag
+      value="Lorem"
+      severity="info"
+      styleClass="m-1"
+    ></p-tag>
+  </ng-template>
+</p-card>
