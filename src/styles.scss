@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .card-list {
@@ -23,15 +24,20 @@ body {
           border-top-right-radius: 4px;
         }
       }
+
+      .card-property {
+        & + .card-property {
+          border-top: 1px solid var(--surface-100);
+        }
+      }
     }
   }
 }
 
-
 // prime style overwrites
 a.p-button {
   text-decoration: none;
-  
+
   .pi {
     margin-right: 0.5rem;
   }
@@ -44,12 +50,12 @@ a.p-button {
   }
 
   &.p-button-link {
-  
     &:focus {
       box-shadow: none;
     }
-  
-    &:hover, &.active {
+
+    &:hover,
+    &.active {
       color: darken(#8dd0ff, 20);
     }
   }

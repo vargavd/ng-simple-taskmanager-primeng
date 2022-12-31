@@ -1,9 +1,6 @@
-<p-card 
-  class="project" 
-  styleClass="p-card-shadow"
->
+<p-card class="project" styleClass="p-card-shadow">
   <ng-template pTemplate="header">
-      <img alt="Card" src="../../../assets/imgs/card-bc.png">
+    <img alt="Card" src="../../../assets/imgs/card-bc.png" />
   </ng-template>
 
   <ng-template pTemplate="title">
@@ -12,12 +9,23 @@
 
   {{ project.description }}
 
+  <div class="card-property pt-1 mt-3 text-xs">
+    <label class="font-bold">Tasks (finished/all) </label>
+    <div>5/10</div>
+  </div>
+
+  <div class="card-property pt-1 mt-2 text-xs">
+    <label class="font-bold">All time tracked </label>
+    <div>2h 15m</div>
+  </div>
+
   <ng-template pTemplate="footer">
     <p-tag
       *ngFor="let tag of project.tags"
       [value]="tag"
       severity="info"
       styleClass="m-1"
+      icon="pi pi-tag"
     ></p-tag>
   </ng-template>
 </p-card>
