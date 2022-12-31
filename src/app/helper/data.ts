@@ -228,6 +228,7 @@ export interface ITask {
   time_tracked_in_minutes: number, // minutes
   status: TASK_STATUS,
   projectId: number,
+  tags: string[],
 
   getTimeString(): string
 };
@@ -243,6 +244,7 @@ export function getTasks(): ITask[] {
       time_tracked_in_minutes: (getRandomInteger(4, true) * 60) + ((getRandomInteger(4, true) * 15)),
       status: Object.values(TASK_STATUS)[getRandomInteger(3)],
       projectId: Projects[getRandomInteger(Projects.length)].id,
+      tags: getRandomStringArray(tags),
 
       getTimeString() {
         const hours = Math.floor(this.time_tracked_in_minutes / 60);

@@ -25,7 +25,8 @@
 
   <ng-template pTemplate="footer">
     <p-tag
-      value="Lorem"
+      *ngFor="let tag of task.tags"
+      [value]="tag"
       severity="info"
       styleClass="m-1"
       icon="pi pi-tag"

@@ -12,6 +12,8 @@ import { CardModule as PrimeNG_CardModule } from 'primeng/card';
 import { TagModule as PrimeNG_TagModule } from 'primeng/tag';
 import { PanelModule as PrimeNG_PanelModule } from 'primeng/panel';
 import { DividerModule as PrimeNG_DividerModule } from 'primeng/divider';
+import { DataViewModule as PrimeNG_DataViewModule } from 'primeng/dataview';
+
 
 // CUSTOM COMPONENTS
 import { AppComponent } from './app.component';
@@ -50,6 +52,7 @@ import { StatusIndicatorComponent } from './common/status-indicator/status-indic
     PrimeNG_TagModule,
     PrimeNG_PanelModule,
     PrimeNG_DividerModule,
+    PrimeNG_DataViewModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
