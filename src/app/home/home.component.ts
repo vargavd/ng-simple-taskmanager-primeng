@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectService } from '../projects/projects.service';
+import { DataService } from '../data.service';
 import { IProject } from '../helper/data';
 
 @Component({
@@ -10,10 +10,10 @@ import { IProject } from '../helper/data';
 export class HomeComponent implements OnInit {
   projects: IProject[];
 
-  constructor(private projectsService: ProjectService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.projects = this.projectsService.getProjects(3);
+    this.projects = this.dataService.projects.slice(0, 3);
   }
 
 }

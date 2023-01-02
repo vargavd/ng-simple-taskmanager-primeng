@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProject } from '../helper/data';
 
 // services
-import { ProjectService } from './projects.service';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -14,10 +14,10 @@ import { ProjectService } from './projects.service';
 export class ProjectsComponent implements OnInit {
   projects: IProject[];
 
-  constructor(private projectsService: ProjectService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.projects = this.projectsService.getProjects();
+    this.projects = this.dataService.projects;
   }
 
 }

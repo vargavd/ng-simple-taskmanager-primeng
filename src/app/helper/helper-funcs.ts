@@ -4,27 +4,21 @@ export const getRandomInteger = (max: number, max_included = false) => {
   return Math.floor(Math.random() * (max));
 };
 
-export const getRandomStringArray = (strings: string[]) => {
-  const clonedStrings = strings.slice()
+export const getRandomElementsFromList = (fromList: any[], maxNumberOfElements: number = 4) => {
+  const clonedList = fromList.slice()
 
-  const getString = () => {
-    let i = getRandomInteger(clonedStrings.length);
-    return clonedStrings.splice(i, 1)[0];
+  const getElement = () => {
+    let i = getRandomInteger(clonedList.length);
+    return clonedList.splice(i, 1)[0];
   };
 
-  const returnStrings: string[] = [getString()];
+  const returnList: any[] = [getElement()];
 
-  if (Math.random() < 0.5) {
-    returnStrings.push(getString());
-
+  for (let index = 1; index < maxNumberOfElements; index++) {
     if (Math.random() < 0.5) {
-      returnStrings.push(getString());
-
-      if (Math.random() < 0.5) {
-        returnStrings.push(getString());
-      }
+      returnList.push(getElement());
     }
   }
 
-  return returnStrings;
+  return returnList;
 };

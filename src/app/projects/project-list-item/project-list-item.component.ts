@@ -14,4 +14,9 @@ export class ProjectListItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getExcerpt() {
+    return this.project.description.length > 100 ? 
+      (this.project.description.slice(0, 100).trim() + '...') : 
+      this.project.description;
+  }
 }

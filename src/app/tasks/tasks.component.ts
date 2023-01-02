@@ -1,6 +1,11 @@
+// AMGULAR IMPORTS
 import { Component, OnInit } from '@angular/core';
+
+// DATA IMPORTS
 import { ITask } from '../helper/data';
-import { TasksService } from './tasks.service';
+
+// CUSTOM SERVICES
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-tasks',
@@ -8,12 +13,13 @@ import { TasksService } from './tasks.service';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
-  tasks: ITask[];
+  tasks: ITask[] = [];
 
-  constructor(private tasksService: TasksService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.tasks = this.tasksService.tasks;
+    this.dataService.projects.forEach(project => {
+      this.tasks.push(...project.tasks);
+    });
   }
-
 }

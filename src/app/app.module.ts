@@ -22,12 +22,11 @@ import { ProjectsComponent } from './projects/projects.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { HomeComponent } from './home/home.component';
 import { ProjectListItemComponent } from './projects/project-list-item/project-list-item.component';
-
-// CUSTOM SERVICES
-import { ProjectService } from './projects/projects.service';
-import { TasksService } from './tasks/tasks.service';
 import { TaskListItemComponent } from './tasks/task-list-item/task-list-item.component';
 import { StatusIndicatorComponent } from './common/status-indicator/status-indicator.component';
+
+// CUSTOM SERVICES
+import { DataService } from './data.service';
 
 
 @NgModule({
@@ -60,7 +59,7 @@ import { StatusIndicatorComponent } from './common/status-indicator/status-indic
       { path: 'tasks', component: TasksComponent }
     ])
   ],
-  providers: [ProjectService, TasksService],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
