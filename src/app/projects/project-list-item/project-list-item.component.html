@@ -7,16 +7,18 @@
     {{ project.title }}
   </ng-template>
 
-  {{ getExcerpt() }}
+  {{ project.getExcerpt() }}
 
   <div class="card-property pt-1 mt-3 text-xs">
     <label class="font-bold">Tasks (finished/all) </label>
-    <div>5/10</div>
+    <div>
+      {{ project.getFinishedTasks().length + "/" + project.tasks.length }}
+    </div>
   </div>
 
   <div class="card-property pt-1 mt-2 text-xs">
     <label class="font-bold">All time tracked </label>
-    <div>2h 15m</div>
+    <div>{{ project.getTimeTracked() }}</div>
   </div>
 
   <ng-template pTemplate="footer">

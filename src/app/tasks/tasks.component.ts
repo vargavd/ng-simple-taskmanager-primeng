@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // DATA IMPORTS
-import { ITask } from '../helper/data';
+import { Task } from '../helper/data';
 
 // CUSTOM SERVICES
 import { DataService } from '../data.service';
@@ -13,7 +13,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
-  tasks: ITask[] = [];
+  tasks: Task[] = [];
 
   constructor(private dataService: DataService) { }
 

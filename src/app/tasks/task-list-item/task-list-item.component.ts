@@ -2,7 +2,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 // data type
-import { ITask } from 'src/app/helper/data';
+import { Task } from 'src/app/helper/data';
 
 @Component({
   selector: 'app-task-list-item',
@@ -10,7 +10,7 @@ import { ITask } from 'src/app/helper/data';
   styleUrls: ['./task-list-item.component.scss']
 })
 export class TaskListItemComponent implements OnInit {
-  @Input() task: ITask;
+  @Input() task: Task;
 
   constructor() { }
 

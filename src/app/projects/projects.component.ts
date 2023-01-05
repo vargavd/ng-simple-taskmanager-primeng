@@ -1,6 +1,6 @@
 // angular imports
 import { Component, OnInit } from '@angular/core';
-import { IProject } from '../helper/data';
+import { Project } from '../helper/data';
 
 // services
 import { DataService } from '../data.service';
@@ -12,7 +12,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-  projects: IProject[];
+  projects: Project[];
 
   constructor(private dataService: DataService) { }
 

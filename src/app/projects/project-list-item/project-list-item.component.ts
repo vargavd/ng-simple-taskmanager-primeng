@@ -1,5 +1,9 @@
+// ANGULAR IMPORTS
 import { Component, Input, OnInit } from '@angular/core';
-import { IProject } from 'src/app/helper/data';
+
+// DATA IMPORTS
+import { Project } from 'src/app/helper/data';
+
 
 @Component({
   selector: 'app-project-list-item',
@@ -7,16 +11,14 @@ import { IProject } from 'src/app/helper/data';
   styleUrls: ['./project-list-item.component.scss']
 })
 export class ProjectListItemComponent implements OnInit {
-  @Input() project: IProject;
+  @Input() project: Project;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  getExcerpt() {
-    return this.project.description.length > 100 ? 
-      (this.project.description.slice(0, 100).trim() + '...') : 
-      this.project.description;
-  }
+  // UI HELPER FUNCS
+  
+
 }

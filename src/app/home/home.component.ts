@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { IProject } from '../helper/data';
+import { Project } from '../helper/data';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import { IProject } from '../helper/data';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  projects: IProject[];
+  projects: Project[];
 
   constructor(private dataService: DataService) { }
 

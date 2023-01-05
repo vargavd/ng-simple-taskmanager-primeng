@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 
 // DATA IMPORTS
-import { TASK_STATUS, ITask, IProject, tags, loremGenerator } from "./helper/data";
+import { TASK_STATUS, Task, Project, tags, loremGenerator } from "./helper/data";
 
 // HELPER FUNCS
 import { getRandomInteger, getRandomElementsFromList } from "./helper/helper-funcs";
@@ -9,31 +9,21 @@ import { getRandomInteger, getRandomElementsFromList } from "./helper/helper-fun
 
 @Injectable()
 export class DataService {
-  projects: IProject[] = [];
+  projects: Project[] = [];
 
   // private functions
-  private generateTasks(projectId: number, minimum: number = 3, maximum: number = 6):ITask[] {
-    const tasks:ITask[] = [];
+  private generateTasks(projectId: number, minimum: number = 3, maximum: number = 6):Task[] {
+    const tasks:Task[] = [];
 
     for (let i = 0; i < 10 + getRandomInteger(10); i++) {
-      tasks.push({
-        id: `project_${projectId}_task_${i}`,
-        title: `Task Title ${i} (Project ${projectId})`,
-        description: loremGenerator.generateSentences(4),
-        time_tracked_in_minutes: (getRandomInteger(4, true) * 60) + ((getRandomInteger(4, true) * 15)),
-        status: Object.values(TASK_STATUS)[getRandomInteger(3)],
-        tags: getRandomElementsFromList(tags),
-  
-        getTimeString() {
-          const hours = Math.floor(this.time_tracked_in_minutes / 60);
-          const minutes = this.time_tracked_in_minutes % 60;
-  
-          // padding 0s
-          const minutes_string = minutes > 9 ? minutes.toString() : `0${minutes}`;
-  
-          return `${hours}h ${minutes_string}m`;
-        }
-      });
+      tasks.push(new Task(
+        `project_${projectId}_task_${i}`, // id
+        `Task Title ${i} (Project ${projectId})`, // title
+        loremGenerator.generateSentences(4), // description
+        (getRandomInteger(4, true) * 60) + ((getRandomInteger(4, true) * 15)), // time_tracked_in_minutes
+        Object.values(TASK_STATUS)[getRandomInteger(3)], // status
+        getRandomElementsFromList(tags) // tags
+      ));
     }
   
     return tasks;
@@ -41,13 +31,13 @@ export class DataService {
 
   constructor() {
     for (let index = 0; index < 15; index++) {
-      this.projects.push({
-        id: index,
-        title: `Project Title ${index}`,
-        description: loremGenerator.generateSentences(15),
-        tags: getRandomElementsFromList(tags),
-        tasks: this.generateTasks(index)
-      });
+      this.projects.push(new Project (
+        index, // id
+        `Project Title ${index}`, // title
+        loremGenerator.generateSentences(15), // description
+        getRandomElementsFromList(tags), // tags
+        this.generateTasks(index), // tasks
+      ));
     }
   }
 }
