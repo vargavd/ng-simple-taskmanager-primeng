@@ -13,6 +13,7 @@ import { TagModule as PrimeNG_TagModule } from 'primeng/tag';
 import { PanelModule as PrimeNG_PanelModule } from 'primeng/panel';
 import { DividerModule as PrimeNG_DividerModule } from 'primeng/divider';
 import { DataViewModule as PrimeNG_DataViewModule } from 'primeng/dataview';
+import { ChartModule as PrimeNG_ChartModule } from 'primeng/chart';
 
 
 // CUSTOM COMPONENTS
@@ -27,6 +28,7 @@ import { StatusIndicatorComponent } from './common/status-indicator/status-indic
 
 // CUSTOM SERVICES
 import { DataService } from './data.service';
+import { ProjectPageComponent } from './projects/project-page/project-page.component';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { DataService } from './data.service';
     ProjectListItemComponent,
     TasksComponent,
     TaskListItemComponent,
-    StatusIndicatorComponent
+    StatusIndicatorComponent,
+    ProjectPageComponent
   ],
   imports: [
     BrowserModule,
@@ -52,10 +55,12 @@ import { DataService } from './data.service';
     PrimeNG_PanelModule,
     PrimeNG_DividerModule,
     PrimeNG_DataViewModule,
+    PrimeNG_ChartModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'projects', component: ProjectsComponent },
+      { path: 'projects/:projectId', component: ProjectPageComponent },
       { path: 'tasks', component: TasksComponent }
     ])
   ],

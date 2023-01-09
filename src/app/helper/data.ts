@@ -61,6 +61,12 @@ export class Project {
       this.description;
   }
 
+  getNotStartedTasks():Task[] {
+    return this.tasks.filter(task => task.status === TASK_STATUS.NOT_STARTED);
+  }
+  getInProgressTasks():Task[] {
+    return this.tasks.filter(task => task.status === TASK_STATUS.IN_PROGRESS);
+  }
   getFinishedTasks():Task[] {
     return this.tasks.filter(task => task.status === TASK_STATUS.FINISHED);
   }

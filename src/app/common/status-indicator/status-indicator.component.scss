@@ -1,19 +1,31 @@
 .status-indicator {
   &.not-started {
     .pi {
-      color: darkred;
+      color: var(--red-500);
+    }
+
+    &.color-label {
+      color: var(--red-300);
     }
   }
 
   &.in-progress {
     .pi {
-      color: darkorange;
+      color: var(--orange-300);
+    }
+
+    &.color-label {
+      color: var(--orange-300);
     }
   }
 
   &.finished {
     .pi {
-      color: darkgreen;
+      color: var(--green-300);
+    }
+
+    &.color-label {
+      color: var(--green-300);
     }
   }
 }

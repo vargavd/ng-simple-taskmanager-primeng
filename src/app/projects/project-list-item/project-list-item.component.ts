@@ -1,5 +1,6 @@
 // ANGULAR IMPORTS
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 // DATA IMPORTS
 import { Project } from 'src/app/helper/data';
@@ -13,12 +14,13 @@ import { Project } from 'src/app/helper/data';
 export class ProjectListItemComponent implements OnInit {
   @Input() project: Project;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  // UI HELPER FUNCS
-  
-
+  // UI EVENTS
+  clickOnProjectCard() {
+    this.router.navigate(['/projects', this.project.id]);
+  }
 }
