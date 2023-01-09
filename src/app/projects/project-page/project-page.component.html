@@ -5,6 +5,15 @@
     <div class="project-description">
       {{ project.description }}
     </div>
+
+    <h2>FINISHED TASKS</h2>
+    <app-task-list [tasks]="project.getFinishedTasks()"></app-task-list>
+
+    <h2>IM PROGRESS TASKS</h2>
+    <app-task-list [tasks]="project.getFinishedTasks()"></app-task-list>
+
+    <h2>NOT STARTED TASKS</h2>
+    <app-task-list [tasks]="project.getFinishedTasks()"></app-task-list>
   </div>
   <div class="col-3 col-offset-1">
     <div

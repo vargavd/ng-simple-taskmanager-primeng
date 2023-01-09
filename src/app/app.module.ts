@@ -29,6 +29,7 @@ import { StatusIndicatorComponent } from './common/status-indicator/status-indic
 // CUSTOM SERVICES
 import { DataService } from './data.service';
 import { ProjectPageComponent } from './projects/project-page/project-page.component';
+import { TaskListComponent } from './tasks/task-list/task-list.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ProjectPageComponent } from './projects/project-page/project-page.compo
     TasksComponent,
     TaskListItemComponent,
     StatusIndicatorComponent,
-    ProjectPageComponent
+    ProjectPageComponent,
+    TaskListComponent
   ],
   imports: [
     BrowserModule,
