@@ -82,3 +82,19 @@ export class Project {
 };
 
 
+// USER EXPORTS
+export enum DEVELOPER_LEVEL {
+  JUNIOR = 'Junior', 
+  MEDIOR = 'Medior', 
+  SENIOR = 'Senior', 
+  LEAD = 'Lead'
+};
+export type UserModel = {
+  userName: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  devLevel: DEVELOPER_LEVEL;
+  about: string;
+}
+
