@@ -19,7 +19,6 @@ import { InputTextModule as PrimeNG_InputTextModule } from 'primeng/inputtext';
 import { DropdownModule as PrimeNG_DropdownModule } from 'primeng/dropdown';
 import { EditorModule as PrimeNG_EditorModule } from 'primeng/editor';
 
-
 // CUSTOM COMPONENTS
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -29,12 +28,13 @@ import { HomeComponent } from './home/home.component';
 import { ProjectListItemComponent } from './projects/project-list-item/project-list-item.component';
 import { TaskListItemComponent } from './tasks/task-list-item/task-list-item.component';
 import { StatusIndicatorComponent } from './common/status-indicator/status-indicator.component';
-
-// CUSTOM SERVICES
-import { DataService } from './data.service';
 import { ProjectPageComponent } from './projects/project-page/project-page.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { UserComponent } from './user/user.component';
+
+// CUSTOM SERVICES
+import { DataService } from './data.service';
+import { UserService } from './user/user.service';
 
 
 @NgModule({
@@ -77,7 +77,7 @@ import { UserComponent } from './user/user.component';
       { path: 'user', component: UserComponent }
     ])
   ],
-  providers: [DataService],
+  providers: [DataService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

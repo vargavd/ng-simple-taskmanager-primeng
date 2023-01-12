@@ -5,6 +5,12 @@ import { Router } from '@angular/router';
 // PRIME IMPORTS
 import { MenuItem } from 'primeng/api';
 
+// CUSTOM SERVICES
+import { UserService } from '../user/user.service';
+
+// DATA IMPORTS
+import { UserModel } from '../helper/data';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,9 +19,9 @@ import { MenuItem } from 'primeng/api';
 export class HeaderComponent implements OnInit {
   // account properties
   userMenu: MenuItem[];
-  loggedIn: boolean;
+  user: UserModel;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   // INIT
   ngOnInit(): void {
@@ -24,15 +30,18 @@ export class HeaderComponent implements OnInit {
       { label: 'My Tasks', icon: 'pi pi-list', routerLink: ['/user/tasks'] },
       { label: 'Settings', icon: 'pi pi-cog', routerLink: ['/user/settings'] },
       { separator: true },
-      { label: 'Logout', icon: 'pi pi-sign-out', command: () => this.loggedIn = false },
+      { label: 'Logout', icon: 'pi pi-sign-out', command: () => this.userService.logout() },
     ];
 
-    this.loggedIn = false;
+    this.user = this.userService.user;
   }
 
-  // EVENTS
+  // DOM events
   clickOnLink(path: string) {
     this.router.navigate([path]);
+  }
+  clickOnLogin() {
+    this.userService.login();
   }
 
   // for debugging
