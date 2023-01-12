@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 // PRIMENG MODULES
 import { ButtonModule as PrimeNG_ButtonModule } from 'primeng/button';
@@ -14,6 +15,9 @@ import { PanelModule as PrimeNG_PanelModule } from 'primeng/panel';
 import { DividerModule as PrimeNG_DividerModule } from 'primeng/divider';
 import { DataViewModule as PrimeNG_DataViewModule } from 'primeng/dataview';
 import { ChartModule as PrimeNG_ChartModule } from 'primeng/chart';
+import { InputTextModule as PrimeNG_InputTextModule } from 'primeng/inputtext';
+import { DropdownModule as PrimeNG_DropdownModule } from 'primeng/dropdown';
+import { EditorModule as PrimeNG_EditorModule } from 'primeng/editor';
 
 
 // CUSTOM COMPONENTS
@@ -30,6 +34,7 @@ import { StatusIndicatorComponent } from './common/status-indicator/status-indic
 import { DataService } from './data.service';
 import { ProjectPageComponent } from './projects/project-page/project-page.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -43,11 +48,13 @@ import { TaskListComponent } from './tasks/task-list/task-list.component';
     TaskListItemComponent,
     StatusIndicatorComponent,
     ProjectPageComponent,
-    TaskListComponent
+    TaskListComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
 
     PrimeNG_ButtonModule,
     PrimeNG_ToolbarModule,
@@ -58,12 +65,16 @@ import { TaskListComponent } from './tasks/task-list/task-list.component';
     PrimeNG_DividerModule,
     PrimeNG_DataViewModule,
     PrimeNG_ChartModule,
+    PrimeNG_InputTextModule,
+    PrimeNG_DropdownModule,
+    PrimeNG_EditorModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'projects', component: ProjectsComponent },
       { path: 'projects/:projectId', component: ProjectPageComponent },
-      { path: 'tasks', component: TasksComponent }
+      { path: 'tasks', component: TasksComponent },
+      { path: 'user', component: UserComponent }
     ])
   ],
   providers: [DataService],
