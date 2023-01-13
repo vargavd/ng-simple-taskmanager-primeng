@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/data.service';
 
 // DATA IMPORTS
-import { Task, TASK_STATUS } from 'src/app/helper/data';
+import { tags, Task, TASK_STATUS } from 'src/app/helper/data';
 
 
 @Component({
@@ -22,9 +22,6 @@ export class TaskPageComponent implements OnInit {
   // local references
   @ViewChild('addHours') addHoursInput: ElementRef;
   @ViewChild('addMinutes') addMinutesInput: ElementRef;
-
-  // helper - for displaying the enum options in the dropdown
-  taskStatuses = Object.values(TASK_STATUS);
 
   // helper DOM functions
   getHours() {
@@ -79,4 +76,23 @@ export class TaskPageComponent implements OnInit {
 
     this.addMinutesInput.nativeElement.value = '';
   }
+  clickOnTag(tag:string) {
+    const tagIndex = this.editedTask.tags.indexOf(tag);
+
+    if (tagIndex === -1) {
+      this.editedTask.tags.push(tag);
+    } else {
+      this.editedTask.tags = this.editedTask.tags.splice(tagIndex, 1)
+    }
+
+    console.log(this.editedTask.tags);
+  }
+  selectedTagsChanged(selectedTags: string[]) {
+    this.editedTask.tags = selectedTags;
+  }
+
+
+  // FORM OPTIONS
+  taskStatuses = Object.values(TASK_STATUS);
+  availableTags = tags;
 }

@@ -63,6 +63,22 @@ a.p-button {
 .p-dropdown {
   width: 100%;
 }
+.tag-list {
+  p-togglebutton {
+    margin: 3px;
+    display: inline-block;
+
+    .p-togglebutton {
+      &.p-highlight {
+        background-color: var(--primary-color);
+
+        &:hover {
+          background-color: #56bdff;
+        }
+      }
+    }
+  }
+}
 
 // prime form
 .field {

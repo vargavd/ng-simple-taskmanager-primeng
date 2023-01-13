@@ -18,6 +18,8 @@ import { ChartModule as PrimeNG_ChartModule } from 'primeng/chart';
 import { InputTextModule as PrimeNG_InputTextModule } from 'primeng/inputtext';
 import { DropdownModule as PrimeNG_DropdownModule } from 'primeng/dropdown';
 import { EditorModule as PrimeNG_EditorModule } from 'primeng/editor';
+import { ToggleButtonModule as PrimeNG_ToggleButtonModule } from 'primeng/togglebutton';
+
 
 // CUSTOM COMPONENTS
 import { AppComponent } from './app.component';
@@ -31,12 +33,13 @@ import { StatusIndicatorComponent } from './common/status-indicator/status-indic
 import { ProjectPageComponent } from './projects/project-page/project-page.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { UserComponent } from './user/user.component';
+import { TaskPageComponent } from './tasks/task-page/task-page.component';
+import { TagListComponent } from './common/tag-list/tag-list.component';
 
 // CUSTOM SERVICES
 import { DataService } from './data.service';
 import { UserService } from './user/user.service';
 import { AuthGuard } from './auth-guard.service';
-import { TaskPageComponent } from './tasks/task-page/task-page.component';
 
 
 @NgModule({
@@ -52,7 +55,8 @@ import { TaskPageComponent } from './tasks/task-page/task-page.component';
     ProjectPageComponent,
     TaskListComponent,
     UserComponent,
-    TaskPageComponent
+    TaskPageComponent,
+    TagListComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +75,7 @@ import { TaskPageComponent } from './tasks/task-page/task-page.component';
     PrimeNG_InputTextModule,
     PrimeNG_DropdownModule,
     PrimeNG_EditorModule,
+    PrimeNG_ToggleButtonModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent },

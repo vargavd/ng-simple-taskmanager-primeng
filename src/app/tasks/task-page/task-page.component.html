@@ -100,6 +100,15 @@
       </div>
     </div>
   </div>
+  <div class="col-6">
+    <div class="field">
+      <label class="block">Tags</label>
+      <app-tag-list
+        [selectedTags]="editedTask.tags"
+        (selectedTagsChanged)="selectedTagsChanged($event)"
+      ></app-tag-list>
+    </div>
+  </div>
 </div>
 
 <button pButton type="button" class="mt-2" (click)="onSave()">Save Task</button>
