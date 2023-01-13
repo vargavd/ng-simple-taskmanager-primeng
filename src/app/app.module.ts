@@ -36,6 +36,7 @@ import { UserComponent } from './user/user.component';
 import { DataService } from './data.service';
 import { UserService } from './user/user.service';
 import { AuthGuard } from './auth-guard.service';
+import { TaskPageComponent } from './tasks/task-page/task-page.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { AuthGuard } from './auth-guard.service';
     StatusIndicatorComponent,
     ProjectPageComponent,
     TaskListComponent,
-    UserComponent
+    UserComponent,
+    TaskPageComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +76,7 @@ import { AuthGuard } from './auth-guard.service';
       { path: '', component: HomeComponent },
       { path: 'projects', component: ProjectsComponent },
       { path: 'projects/:projectId', component: ProjectPageComponent },
+      { path: 'projects/:projectId/tasks/:taskId', component: TaskPageComponent },
       { path: 'tasks', component: TasksComponent },
       { path: 'user', component: UserComponent, canActivate: [AuthGuard] }
     ])

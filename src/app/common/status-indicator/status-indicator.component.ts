@@ -13,14 +13,24 @@ export class StatusIndicatorComponent {
   @Input() status: TASK_STATUS;
   @Input() colorLabel: boolean = false;
 
-  getStatusKey(separator: string = ' ') {
-    const origKey = Object.keys(TASK_STATUS)[Object.values(TASK_STATUS).indexOf(this.status)];
-
-    return origKey.replace(/_/g, separator);
+  getStatus(separator: string = ' ') {
+    return this.status.replace(/ /g, separator);
   }
 
   getColorLabelClass() {
     return this.colorLabel ? 'color-label' : '';
+  }
+
+  getIconClass() {
+    if (this.status == TASK_STATUS.FINISHED) {
+      return 'pi-check-square';
+    }
+
+    if (this.status == TASK_STATUS.IN_PROGRESS) {
+      return 'pi-hourglass';
+    }
+
+    return 'pi-stop';
   }
 
 }

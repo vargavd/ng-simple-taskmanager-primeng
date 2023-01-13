@@ -1,5 +1,10 @@
 <p-card class="task relative" styleClass="p-card-shadow" [header]="task.title">
-  <p-button icon="pi pi-pencil" class="edit-task pl-2" styleClass="p-button-sm">
+  <p-button
+    icon="pi pi-pencil"
+    class="edit-task pl-2"
+    styleClass="p-button-sm"
+    (click)="clickOnTask()"
+  >
   </p-button>
 
   <ng-template pTemplate="content">
@@ -18,7 +23,10 @@
     <div class="card-property pt-1 mt-2 text-xs">
       <label class="font-bold">Status </label>
       <div>
-        <app-status-indicator [status]="task.status"></app-status-indicator>
+        <app-status-indicator
+          [status]="task.status"
+          [colorLabel]="true"
+        ></app-status-indicator>
       </div>
     </div>
   </ng-template>

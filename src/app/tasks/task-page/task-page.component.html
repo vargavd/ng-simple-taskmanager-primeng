@@ -1,0 +1,53 @@
+<h1>{{ editedTask.title }}</h1>
+
+<div class="grid">
+  <div class="col-6">
+    <div class="field">
+      <label for="title" class="block">Title</label>
+      <input
+        type="text"
+        id="title"
+        pInputText
+        required
+        [(ngModel)]="editedTask.title"
+      />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="field">
+      <label class="block">Status</label>
+      <p-dropdown [options]="taskStatuses" [(ngModel)]="editedTask.status">
+        <!-- SELECTED TEMPLATE -->
+        <ng-template pTemplate="selectedItem">
+          <app-status-indicator
+            [status]="editedTask.status"
+          ></app-status-indicator>
+        </ng-template>
+
+        <!-- OPTIOM TEMPLATE -->
+        <ng-template let-status pTemplate="item">
+          <app-status-indicator [status]="status"></app-status-indicator>
+        </ng-template>
+      </p-dropdown>
+    </div>
+  </div>
+</div>
+
+<div class="field">
+  <label>Description</label>
+  <p-editor [style]="{ height: '100px' }" [(ngModel)]="editedTask.description">
+    <ng-template pTemplate="header">
+      <span class="ql-formats">
+        <button type="button" class="ql-bold" aria-label="Bold"></button>
+        <button type="button" class="ql-italic" aria-label="Italic"></button>
+        <button
+          type="button"
+          class="ql-underline"
+          aria-label="Underline"
+        ></button>
+      </span>
+    </ng-template>
+  </p-editor>
+</div>
+
+<button pButton type="button" class="mt-2" (click)="onSave()">Save Task</button>

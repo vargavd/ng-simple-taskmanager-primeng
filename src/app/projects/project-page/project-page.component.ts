@@ -19,7 +19,7 @@ export class ProjectPageComponent implements OnInit {
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const projectId = +this.route.params['projectId'];
+    const projectId = +this.route.snapshot.params['projectId'];
 
     this.project = this.dataService.projects.find(p => p.id === projectId);
 

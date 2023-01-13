@@ -17,14 +17,19 @@ export const loremGenerator = new LoremIpsum({
 
 // TASK EXPORTS
 export enum TASK_STATUS {
-  NOT_STARTED = 'pi-stop',
-  IN_PROGRESS = 'pi-hourglass',
-  FINISHED = 'pi-check-square'
+  NOT_STARTED = 'Not Started',
+  IN_PROGRESS = 'In Progress',
+  FINISHED = 'Finished'
+};
+
+export const getTaskStatusStrings = () => {
+  return Object.keys(TASK_STATUS).filter(status => isNaN(Number(status)));
 };
 
 export class Task {
   constructor(
-    public id: string,
+    public id: number,
+    public projectId: number,
     public title: string,
     public description: string,
     public time_tracked_in_minutes: number, // minutes

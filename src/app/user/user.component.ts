@@ -22,7 +22,6 @@ export class UserComponent implements OnInit {
 
   // setter funcs
   devLevelSelected($event: { value: string }) {
-    console.log($event.value);
     this.user.devLevel = DEVELOPER_LEVEL[$event.value.toUpperCase()];
   };
 
