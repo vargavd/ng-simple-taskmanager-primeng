@@ -50,4 +50,56 @@
   </p-editor>
 </div>
 
+<div class="grid">
+  <div class="col-6">
+    <div class="field">
+      <label class="block"
+        >Time Tracked - {{ editedTask.minutesTracked }}m</label
+      >
+      <div class="grid">
+        <div class="col-6">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">Hours</span>
+            <input
+              type="text"
+              id="time_tracked"
+              pInputText
+              required
+              disabled
+              [ngModel]="getHours()"
+            />
+          </div>
+
+          <div class="p-inputgroup mt-3">
+            <input type="number" placeholder="Hours" pInputText #addHours />
+            <button type="button" pButton (click)="onAddHours()">
+              <span class="pi pi-plus"></span>
+            </button>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">Minutes</span>
+            <input
+              type="text"
+              id="time_tracked"
+              pInputText
+              required
+              disabled
+              [ngModel]="getMinutes()"
+            />
+          </div>
+
+          <div class="p-inputgroup mt-3">
+            <input type="number" placeholder="Minutes" pInputText #addMinutes />
+            <button type="button" pButton (click)="onAddMinutes()">
+              <span class="pi pi-plus"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <button pButton type="button" class="mt-2" (click)="onSave()">Save Task</button>

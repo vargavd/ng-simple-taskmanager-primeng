@@ -23,7 +23,7 @@ export class DataService {
         projectId, // project id
         `Task Title ${i} (Project ${projectId})`, // title
         loremGenerator.generateSentences(4), // description
-        (getRandomInteger(4, true) * 60) + ((getRandomInteger(4, true) * 15)), // time_tracked_in_minutes
+        (getRandomInteger(4, true) * 60) + ((getRandomInteger(4, true) * 15)), // minutesTracked
         Object.values(TASK_STATUS)[getRandomInteger(getTaskStatusStrings().length)], // status
         getRandomElementsFromList(tags) // tags
       ));

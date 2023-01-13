@@ -1,5 +1,5 @@
 // ANGULAR IMPORTS
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // CUSTOM SERVICE IMPORTS
@@ -19,9 +19,21 @@ export class TaskPageComponent implements OnInit {
   editedTask: Task;
   taskFromService: Task;
 
+  // local references
+  @ViewChild('addHours') addHoursInput: ElementRef;
+  @ViewChild('addMinutes') addMinutesInput: ElementRef;
 
   // helper - for displaying the enum options in the dropdown
   taskStatuses = Object.values(TASK_STATUS);
+
+  // helper DOM functions
+  getHours() {
+    return Math.floor(this.editedTask.minutesTracked / 60);
+  }
+  getMinutes() {
+    return this.editedTask.minutesTracked % 60;
+  }
+
 
   constructor(private dataService:DataService, private route: ActivatedRoute) { }
 
@@ -38,7 +50,7 @@ export class TaskPageComponent implements OnInit {
       this.taskFromService.projectId,
       this.taskFromService.title,
       this.taskFromService.description,
-      this.taskFromService.time_tracked_in_minutes,
+      this.taskFromService.minutesTracked,
       this.taskFromService.status,
       this.taskFromService.tags
     );
@@ -49,8 +61,22 @@ export class TaskPageComponent implements OnInit {
   onSave() {
     this.taskFromService.title = this.editedTask.title;
     this.taskFromService.description = this.editedTask.description;
-    this.taskFromService.time_tracked_in_minutes = this.editedTask.time_tracked_in_minutes;
+    this.taskFromService.minutesTracked = this.editedTask.minutesTracked;
     this.taskFromService.status = this.editedTask.status;
     this.taskFromService.tags = this.editedTask.tags;
+  }
+  onAddHours() {
+    const hoursToAdd = +this.addHoursInput.nativeElement.value;
+
+    this.editedTask.minutesTracked += hoursToAdd*60;
+
+    this.addHoursInput.nativeElement.value = '';
+  }
+  onAddMinutes() {
+    const minutesToAdd = +this.addMinutesInput.nativeElement.value;
+
+    this.editedTask.minutesTracked += minutesToAdd;
+
+    this.addMinutesInput.nativeElement.value = '';
   }
 }

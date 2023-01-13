@@ -32,14 +32,14 @@ export class Task {
     public projectId: number,
     public title: string,
     public description: string,
-    public time_tracked_in_minutes: number, // minutes
+    public minutesTracked: number, // minutes
     public status: TASK_STATUS,
     public tags: string[]
   ) {}
 
   getTimeString() {
-    const hours = Math.floor(this.time_tracked_in_minutes / 60);
-    const minutes = this.time_tracked_in_minutes % 60;
+    const hours = Math.floor(this.minutesTracked / 60);
+    const minutes = this.minutesTracked % 60;
 
     // padding 0s
     const minutes_string = minutes > 9 ? minutes.toString() : `0${minutes}`;
@@ -79,7 +79,7 @@ export class Project {
   getTimeTracked():string {
     const allTimeTrackedInMinutes = this.tasks
       .filter(task => task.status !== TASK_STATUS.NOT_STARTED)
-      .map(task => task.time_tracked_in_minutes)
+      .map(task => task.minutesTracked)
       .reduce((sumTimeTracked:number, currentTimeTracked:number) => sumTimeTracked + currentTimeTracked, 0);
 
     return Math.floor(allTimeTrackedInMinutes / 60) + 'h ' + (allTimeTrackedInMinutes % 60) + 'm';
