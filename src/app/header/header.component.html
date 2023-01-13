@@ -43,7 +43,7 @@
     </p-button>
 
     <p-splitButton
-      label="Daniel"
+      [label]="user.firstName"
       icon="pi pi-user"
       styleClass="mr-3 p-button-secondary"
       *ngIf="user.userName"

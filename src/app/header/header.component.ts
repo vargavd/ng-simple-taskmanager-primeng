@@ -1,6 +1,6 @@
 // ANGULAR IMPORTS
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // PRIME IMPORTS
 import { MenuItem } from 'primeng/api';
@@ -21,7 +21,19 @@ export class HeaderComponent implements OnInit {
   userMenu: MenuItem[];
   user: UserModel;
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(
+    private router: Router, 
+    private userService: UserService
+  ) {}
+
+  // private funcs
+  private clickOnLogout() {
+    this.userService.logout();
+
+    if (window.location.pathname === '/user') {
+      this.router.navigate(['/']);
+    }
+  }
 
   // INIT
   ngOnInit(): void {
@@ -30,7 +42,7 @@ export class HeaderComponent implements OnInit {
       { label: 'My Tasks', icon: 'pi pi-list', routerLink: ['/user/tasks'] },
       { label: 'Settings', icon: 'pi pi-cog', routerLink: ['/user/settings'] },
       { separator: true },
-      { label: 'Logout', icon: 'pi pi-sign-out', command: () => this.userService.logout() },
+      { label: 'Logout', icon: 'pi pi-sign-out', command: this.clickOnLogout.bind(this) },
     ];
 
     this.user = this.userService.user;

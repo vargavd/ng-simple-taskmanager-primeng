@@ -35,6 +35,7 @@ import { UserComponent } from './user/user.component';
 // CUSTOM SERVICES
 import { DataService } from './data.service';
 import { UserService } from './user/user.service';
+import { AuthGuard } from './auth-guard.service';
 
 
 @NgModule({
@@ -74,10 +75,10 @@ import { UserService } from './user/user.service';
       { path: 'projects', component: ProjectsComponent },
       { path: 'projects/:projectId', component: ProjectPageComponent },
       { path: 'tasks', component: TasksComponent },
-      { path: 'user', component: UserComponent }
+      { path: 'user', component: UserComponent, canActivate: [AuthGuard] }
     ])
   ],
-  providers: [DataService, UserService],
+  providers: [DataService, UserService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

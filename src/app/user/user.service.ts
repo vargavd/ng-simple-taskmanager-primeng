@@ -15,27 +15,47 @@ export class UserService {
     about: '',
   };
 
+  setUser(userName:string, 
+    firstName:string, 
+    lastName:string, 
+    email:string, 
+    devLevel:DEVELOPER_LEVEL, 
+    about:string
+  ) {
+    this.user.userName = userName;
+    this.user.firstName = firstName;
+    this.user.lastName = lastName;
+    this.user.email = email;
+    this.user.devLevel = devLevel;
+    this.user.about = about;
+  }
+
   login() {
-    this.user.userName = 'danielv';
-    this.user.firstName = 'Daniel';
-    this.user.lastName = 'Varga';
-    this.user.email = 'varga.viktor.daniel@gmail.com';
-    this.user.devLevel = DEVELOPER_LEVEL.MEDIOR;
-    this.user.about = 'Coder and gamer';
+    this.setUser('danielv',
+      'Daniel',
+      'Varga',
+      'varga.viktor.daniel@gmail.com',
+      DEVELOPER_LEVEL.MEDIOR,
+      'Coder and gamer'
+    );
 
     console.log('Login in service');
   }
+
   logout() {
-    this.user.userName = '';
-    this.user.firstName = '';
-    this.user.lastName = '';
-    this.user.email = '';
-    this.user.devLevel = DEVELOPER_LEVEL.MEDIOR;
-    this.user.about = '';
+    this.setUser('',
+      '',
+      '',
+      '',
+      DEVELOPER_LEVEL.MEDIOR,
+      ''
+    );
 
     console.log('Logout in service');
   }
+
   isLoggedIn() {
     return this.user != null;
   }
+  
 }

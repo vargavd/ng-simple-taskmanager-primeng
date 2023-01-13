@@ -4,6 +4,9 @@ import { Component, OnInit } from '@angular/core';
 // DATA IMPORTS
 import { DEVELOPER_LEVEL, UserModel } from '../helper/data';
 
+// SERVICE IMPORTS
+import { UserService } from './user.service';
+
 
 @Component({
   selector: 'app-user',
@@ -23,21 +26,21 @@ export class UserComponent implements OnInit {
     this.user.devLevel = DEVELOPER_LEVEL[$event.value.toUpperCase()];
   };
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.user = {
-      userName: 'danielv',
-      firstName: 'Daniel',
-      lastName: 'Varga',
-      email: 'varga.viktor.daniel@gmail.com',
-      devLevel: DEVELOPER_LEVEL.MEDIOR,
-      about: 'Coder and gamer',
-    };
+    this.user = { ...this.userService.user };
   }
 
   onSave() {
-    console.log('Entered Data: ', this.user);
+    this.userService.setUser(
+      this.user.userName, 
+      this.user.firstName, 
+      this.user.lastName, 
+      this.user.email, 
+      this.user.devLevel, 
+      this.user.about
+    );
   }
 
   
