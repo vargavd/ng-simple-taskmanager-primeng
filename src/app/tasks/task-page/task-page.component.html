@@ -35,19 +35,12 @@
 
 <div class="field">
   <label>Description</label>
-  <p-editor [style]="{ height: '100px' }" [(ngModel)]="editedTask.description">
-    <ng-template pTemplate="header">
-      <span class="ql-formats">
-        <button type="button" class="ql-bold" aria-label="Bold"></button>
-        <button type="button" class="ql-italic" aria-label="Italic"></button>
-        <button
-          type="button"
-          class="ql-underline"
-          aria-label="Underline"
-        ></button>
-      </span>
-    </ng-template>
-  </p-editor>
+  <textarea
+    pInputTextarea
+    [(ngModel)]="editedTask.description"
+    [style]="{ width: '100%' }"
+    rows="3"
+  ></textarea>
 </div>
 
 <div class="grid">

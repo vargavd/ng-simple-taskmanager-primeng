@@ -17,8 +17,9 @@ import { DataViewModule as PrimeNG_DataViewModule } from 'primeng/dataview';
 import { ChartModule as PrimeNG_ChartModule } from 'primeng/chart';
 import { InputTextModule as PrimeNG_InputTextModule } from 'primeng/inputtext';
 import { DropdownModule as PrimeNG_DropdownModule } from 'primeng/dropdown';
-import { EditorModule as PrimeNG_EditorModule } from 'primeng/editor';
 import { ToggleButtonModule as PrimeNG_ToggleButtonModule } from 'primeng/togglebutton';
+import { InputTextareaModule as PrimeNG_InputTextareaModule } from 'primeng/inputtextarea';
+
 
 
 // CUSTOM COMPONENTS
@@ -74,8 +75,8 @@ import { AuthGuard } from './auth-guard.service';
     PrimeNG_ChartModule,
     PrimeNG_InputTextModule,
     PrimeNG_DropdownModule,
-    PrimeNG_EditorModule,
     PrimeNG_ToggleButtonModule,
+    PrimeNG_InputTextareaModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
