@@ -13,11 +13,12 @@ import { DataService } from '../data.service';
 })
 export class ProjectsComponent implements OnInit {
   projects: Project[];
+  newProjectModalVisible: boolean;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.projects = this.dataService.projects;
+    this.newProjectModalVisible = false;
   }
-
 }

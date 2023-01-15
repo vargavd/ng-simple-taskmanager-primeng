@@ -34,6 +34,21 @@ export class DataService {
     return tasks;
   }
 
+  // public functions
+  public addProject(title: string, description: string, tags: string[]):number {
+    let nextProjectId = Math.max(...this.projects.map(p => p.id)) + 1;
+
+    this.projects.push(new Project (
+      nextProjectId, // id
+      title, // title
+      description, // description
+      tags, // tags
+      [], // tasks
+    ));
+
+    return nextProjectId;
+  }
+
   constructor() {
     for (let index = 0; index < 15; index++) {
       this.projects.push(new Project (

@@ -19,6 +19,7 @@ import { InputTextModule as PrimeNG_InputTextModule } from 'primeng/inputtext';
 import { DropdownModule as PrimeNG_DropdownModule } from 'primeng/dropdown';
 import { ToggleButtonModule as PrimeNG_ToggleButtonModule } from 'primeng/togglebutton';
 import { InputTextareaModule as PrimeNG_InputTextareaModule } from 'primeng/inputtextarea';
+import { DialogModule as PrimeNG_DialogModule } from 'primeng/dialog';
 
 
 
@@ -41,6 +42,7 @@ import { TagListComponent } from './common/tag-list/tag-list.component';
 import { DataService } from './data.service';
 import { UserService } from './user/user.service';
 import { AuthGuard } from './auth-guard.service';
+import { NewProjectModalComponent } from './projects/new-project-modal/new-project-modal.component';
 
 
 @NgModule({
@@ -57,7 +59,8 @@ import { AuthGuard } from './auth-guard.service';
     TaskListComponent,
     UserComponent,
     TaskPageComponent,
-    TagListComponent
+    TagListComponent,
+    NewProjectModalComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +80,7 @@ import { AuthGuard } from './auth-guard.service';
     PrimeNG_DropdownModule,
     PrimeNG_ToggleButtonModule,
     PrimeNG_InputTextareaModule,
+    PrimeNG_DialogModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
