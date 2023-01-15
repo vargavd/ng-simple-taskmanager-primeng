@@ -20,8 +20,8 @@ import { DropdownModule as PrimeNG_DropdownModule } from 'primeng/dropdown';
 import { ToggleButtonModule as PrimeNG_ToggleButtonModule } from 'primeng/togglebutton';
 import { InputTextareaModule as PrimeNG_InputTextareaModule } from 'primeng/inputtextarea';
 import { DialogModule as PrimeNG_DialogModule } from 'primeng/dialog';
-
-
+import { TooltipModule as PrimeNG_TooltipModule } from 'primeng/tooltip';
+import { ConfirmDialogModule as PrimeNG_ConfirmDialogModule } from 'primeng/confirmdialog';
 
 // CUSTOM COMPONENTS
 import { AppComponent } from './app.component';
@@ -37,12 +37,13 @@ import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { UserComponent } from './user/user.component';
 import { TaskPageComponent } from './tasks/task-page/task-page.component';
 import { TagListComponent } from './common/tag-list/tag-list.component';
+import { NewProjectModalComponent } from './projects/new-project-modal/new-project-modal.component';
+import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
 
 // CUSTOM SERVICES
 import { DataService } from './data.service';
 import { UserService } from './user/user.service';
 import { AuthGuard } from './auth-guard.service';
-import { NewProjectModalComponent } from './projects/new-project-modal/new-project-modal.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { NewProjectModalComponent } from './projects/new-project-modal/new-proje
     UserComponent,
     TaskPageComponent,
     TagListComponent,
-    NewProjectModalComponent
+    NewProjectModalComponent,
+    ProjectEditComponent
   ],
   imports: [
     BrowserModule,
@@ -81,11 +83,14 @@ import { NewProjectModalComponent } from './projects/new-project-modal/new-proje
     PrimeNG_ToggleButtonModule,
     PrimeNG_InputTextareaModule,
     PrimeNG_DialogModule,
+    PrimeNG_TooltipModule,
+    PrimeNG_ConfirmDialogModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'projects', component: ProjectsComponent },
       { path: 'projects/:projectId', component: ProjectPageComponent },
+      { path: 'projects/:projectId/edit', component: ProjectEditComponent },
       { path: 'projects/:projectId/tasks/:taskId', component: TaskPageComponent },
       { path: 'tasks', component: TasksComponent },
       { path: 'user', component: UserComponent, canActivate: [AuthGuard] }

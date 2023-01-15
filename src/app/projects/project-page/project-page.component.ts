@@ -1,6 +1,6 @@
 // ANGULAR IMPORTS
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 // DATA IMPORTS
 import { Project, TASK_STATUS } from 'src/app/helper/data';
@@ -13,10 +13,14 @@ import { DataService } from 'src/app/data.service';
 })
 export class ProjectPageComponent implements OnInit {
   project: Project;
-  data: any;
+  chartData: any;
   chartOptions: any;
 
-  constructor(private dataService: DataService, private route: ActivatedRoute) { }
+  constructor(
+    private dataService: DataService, 
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     const projectId = +this.route.snapshot.params['projectId'];
@@ -30,8 +34,8 @@ export class ProjectPageComponent implements OnInit {
       this.project = this.dataService.projects.find(p => p.id === projectId);
     });
 
-    
-    this.data = {
+    // data for chart
+    this.chartData = {
       labels: ['FINISHED', 'IN PROGRESS', 'NOT STARTED'],
       datasets: [
         {
@@ -56,6 +60,11 @@ export class ProjectPageComponent implements OnInit {
         }
       }
     };
+  }
+
+  // DOM event handlers
+  clickOnEditProject() {
+    this.router.navigate(['projects', this.project.id, 'edit']);
   }
 
   // helper properties for template

@@ -1,12 +1,17 @@
-.task {
-  .edit-task {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    opacity: 0.6;
+:host ::ng-deep {
+  p-card.task {
+    .p-card {
+      position: relative;
+      padding-bottom: 35px;
 
-    &:hover {
-      opacity: 1;
+      .p-card-footer {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        margin-left: -24px;
+        padding: 10px 1.5rem;
+        background-color: var(--surface-0);
+      }
     }
   }
 }
