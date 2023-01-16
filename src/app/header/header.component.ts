@@ -39,8 +39,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.userMenu = [
       { label: 'Profile', icon: 'pi pi-info-circle', routerLink: ['/user'] },
-      { label: 'My Tasks', icon: 'pi pi-list', routerLink: ['/user/tasks'] },
-      { label: 'Settings', icon: 'pi pi-cog', routerLink: ['/user/settings'] },
       { separator: true },
       { label: 'Logout', icon: 'pi pi-sign-out', command: this.clickOnLogout.bind(this) },
     ];

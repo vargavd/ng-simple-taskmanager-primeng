@@ -1,4 +1,21 @@
-<h1>{{ editedTask.title }}</h1>
+<div class="flex justify-content-between align-items-center mt-2">
+  <div class="flex justify-content-between align-items-center">
+    <h1>{{ editedTask.title }}</h1>
+
+    <i
+      class="pi pi-info-circle text-2xl text-primary cursor-pointer ml-2"
+      pTooltip="Saving is instantaneous"
+      tooltipPosition="bottom"
+    ></i>
+  </div>
+
+  <div class="flex justify-content-between align-items-center">
+    Project:
+    <a [routerLink]="['/projects', this.project.id]" class="ml-2 text-lg">
+      {{ project.title }}
+    </a>
+  </div>
+</div>
 
 <div class="grid">
   <div class="col-6">
@@ -104,4 +121,4 @@
   </div>
 </div>
 
-<button pButton type="button" class="mt-2" (click)="onSave()">Save Task</button>
+<!-- <button pButton type="button" class="mt-2" (click)="onSave()">Save Task</button> -->

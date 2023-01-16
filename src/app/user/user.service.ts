@@ -38,8 +38,6 @@ export class UserService {
       DEVELOPER_LEVEL.MEDIOR,
       'Coder and gamer'
     );
-
-    console.log('Login in service');
   }
 
   logout() {
@@ -50,8 +48,6 @@ export class UserService {
       DEVELOPER_LEVEL.MEDIOR,
       ''
     );
-
-    console.log('Logout in service');
   }
 
   isLoggedIn() {

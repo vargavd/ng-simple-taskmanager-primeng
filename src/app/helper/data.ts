@@ -78,7 +78,6 @@ export class Project {
 
   getTimeTracked():string {
     const allTimeTrackedInMinutes = this.tasks
-      .filter(task => task.status !== TASK_STATUS.NOT_STARTED)
       .map(task => task.minutesTracked)
       .reduce((sumTimeTracked:number, currentTimeTracked:number) => sumTimeTracked + currentTimeTracked, 0);
 
