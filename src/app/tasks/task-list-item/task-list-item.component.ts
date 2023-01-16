@@ -1,25 +1,31 @@
-// angular imports
-import { Component, Input, OnInit } from '@angular/core';
+// ANGULAR IMPORTS
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
-// data type
+// DATA IMPORTS
 import { Task } from 'src/app/helper/data';
 
 @Component({
   selector: 'app-task-list-item',
   templateUrl: './task-list-item.component.html',
-  styleUrls: ['./task-list-item.component.scss']
+  styleUrls: ['./task-list-item.component.scss'],
 })
 export class TaskListItemComponent implements OnInit {
   @Input() task: Task;
+  @Output() deleteTask = new EventEmitter<{id: number, projectId: number, button: EventTarget}>();
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  clickOnTask() {
+  // DOM events
+  clickOnDeleteButton(event: Event) {
+    this.deleteTask.emit({id: this.task.id, projectId: this.task.projectId, button: event.target});
+  }
+  clickOnEdit() {
     this.router.navigate(['projects', this.task.projectId, 'tasks', this.task.id]);
   }
+  
 
 }

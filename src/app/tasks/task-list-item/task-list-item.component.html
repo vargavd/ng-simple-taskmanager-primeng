@@ -40,7 +40,7 @@
         class="remove-task"
         label="Delete"
         styleClass="p-button-sm p-button-danger p-button-text"
-        (click)="clickOnTask()"
+        (click)="clickOnDeleteButton($event)"
       >
       </p-button>
 
@@ -49,7 +49,7 @@
         class="edit-task"
         label="Edit"
         styleClass="p-button-sm p-button-text"
-        (click)="clickOnTask()"
+        (click)="clickOnEdit()"
       >
       </p-button>
     </div>

@@ -17,6 +17,13 @@ export class TasksComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
+  // public funcs
+  removeTask(taskId: number) {
+    const taskIndex = this.tasks.findIndex(t => t.id === taskId);
+
+    this.tasks.splice(taskIndex, 1);
+  }
+
   ngOnInit(): void {
     this.dataService.projects.forEach(project => {
       this.tasks.push(...project.tasks);

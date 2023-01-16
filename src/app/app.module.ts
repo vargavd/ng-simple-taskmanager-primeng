@@ -21,7 +21,8 @@ import { ToggleButtonModule as PrimeNG_ToggleButtonModule } from 'primeng/toggle
 import { InputTextareaModule as PrimeNG_InputTextareaModule } from 'primeng/inputtextarea';
 import { DialogModule as PrimeNG_DialogModule } from 'primeng/dialog';
 import { TooltipModule as PrimeNG_TooltipModule } from 'primeng/tooltip';
-import { ConfirmDialogModule as PrimeNG_ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmPopupModule as PrimeNG_ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmationService as PrimeNG_ConfirmationService } from 'primeng/api';
 
 // CUSTOM COMPONENTS
 import { AppComponent } from './app.component';
@@ -44,6 +45,7 @@ import { ProjectEditComponent } from './projects/project-edit/project-edit.compo
 import { DataService } from './data.service';
 import { UserService } from './user/user.service';
 import { AuthGuard } from './auth-guard.service';
+
 
 
 @NgModule({
@@ -84,7 +86,7 @@ import { AuthGuard } from './auth-guard.service';
     PrimeNG_InputTextareaModule,
     PrimeNG_DialogModule,
     PrimeNG_TooltipModule,
-    PrimeNG_ConfirmDialogModule,
+    PrimeNG_ConfirmPopupModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
@@ -96,7 +98,7 @@ import { AuthGuard } from './auth-guard.service';
       { path: 'user', component: UserComponent, canActivate: [AuthGuard] }
     ])
   ],
-  providers: [DataService, UserService, AuthGuard],
+  providers: [DataService, UserService, AuthGuard, PrimeNG_ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
