@@ -18,7 +18,8 @@
   </app-project-list-item>
 </div>
 
-<app-new-project-modal
+<app-new-item-modal
   [modalVisible]="newProjectModalVisible"
   (cancelModal)="newProjectModalVisible = false"
-></app-new-project-modal>
+  itemType="PROJECT"
+></app-new-item-modal>

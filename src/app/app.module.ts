@@ -38,8 +38,8 @@ import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { UserComponent } from './user/user.component';
 import { TaskPageComponent } from './tasks/task-page/task-page.component';
 import { TagListComponent } from './common/tag-list/tag-list.component';
-import { NewProjectModalComponent } from './projects/new-project-modal/new-project-modal.component';
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
+import { NewItemModalComponent } from './common/new-item-modal/new-item-modal.component';
 
 // CUSTOM SERVICES
 import { DataService } from './data.service';
@@ -63,7 +63,7 @@ import { AuthGuard } from './auth-guard.service';
     UserComponent,
     TaskPageComponent,
     TagListComponent,
-    NewProjectModalComponent,
+    NewItemModalComponent,
     ProjectEditComponent
   ],
   imports: [

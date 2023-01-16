@@ -1,5 +1,7 @@
 <p-dialog
-  header="New Project"
+  [header]="
+    'New ' + itemType.charAt(0).toUpperCase() + itemType.slice(1).toLowerCase()
+  "
   [visible]="modalVisible"
   [style]="{ width: '50vw' }"
   [closable]="false"

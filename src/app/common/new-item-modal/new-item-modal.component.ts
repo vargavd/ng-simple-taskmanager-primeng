@@ -9,16 +9,18 @@ import { Project } from 'src/app/helper/data';
 
 
 @Component({
-  selector: 'app-new-project-modal',
-  templateUrl: './new-project-modal.component.html',
-  styleUrls: ['./new-project-modal.component.scss']
+  selector: 'app-new-item-modal',
+  templateUrl: './new-item-modal.component.html',
+  styleUrls: ['./new-item-modal.component.scss']
 })
-export class NewProjectModalComponent {
+export class NewItemModalComponent {
   title: string;
   description: string;
   tags: string[];
 
   @Input() modalVisible: boolean;
+  @Input() itemType: 'TASK' | 'PROJECT';
+  @Input() projectId: number; // in case the new item is a task
   @Output() cancelModal = new EventEmitter<boolean>();
 
   @ViewChild('titleInput') titleInput: NgModel;
@@ -34,6 +36,7 @@ export class NewProjectModalComponent {
   }
 
   onSave() {
+    // validation if they are untouched
     if (!this.title || !this.description) {
       this.titleInput.control.markAsTouched();
       this.descriptionInput.control.markAsTouched();
@@ -41,9 +44,16 @@ export class NewProjectModalComponent {
       return;
     }
 
-    const projectId = this.dataService.addProject(this.title, this.description, this.tags);
+    
+    if (this.itemType === 'TASK') {
+      // ADDING TASK
+    } else {
+      // ADDING PROJECT
+      const projectId = this.dataService.addProject(this.title, this.description, this.tags);
 
-    // this.router.navigate(['/projects', projectId]);
+      this.router.navigate(['/projects', projectId, 'edit']);
+    }
+    
   }
 
   onCancel() {
