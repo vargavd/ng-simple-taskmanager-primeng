@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 // CUSTOM SERVICES
 import { DataService } from 'src/app/data.service';
-import { Project } from 'src/app/helper/data';
+import { Project, Task } from 'src/app/helper/data';
 
 
 @Component({
@@ -21,10 +21,22 @@ export class NewItemModalComponent {
   @Input() modalVisible: boolean;
   @Input() itemType: 'TASK' | 'PROJECT';
   @Input() projectId: number; // in case the new item is a task
-  @Output() cancelModal = new EventEmitter<boolean>();
+  @Output() cancelModal = new EventEmitter<void>();
+  @Output() closeModal = new EventEmitter<void>();
 
   @ViewChild('titleInput') titleInput: NgModel;
   @ViewChild('descriptionInput') descriptionInput: NgModel;
+
+  // private helper funcs
+  resetForm() {
+    // reset values
+    this.title = '';
+    this.description = '';
+
+    // reset validity
+    this.titleInput.reset();
+    this.descriptionInput.reset();
+  }
 
   constructor(
     private dataService: DataService,
@@ -47,6 +59,11 @@ export class NewItemModalComponent {
     
     if (this.itemType === 'TASK') {
       // ADDING TASK
+      this.dataService.addTask(this.projectId, this.title, this.description);
+
+      this.resetForm();
+
+      this.closeModal.emit();
     } else {
       // ADDING PROJECT
       const projectId = this.dataService.addProject(this.title, this.description, this.tags);
@@ -57,16 +74,9 @@ export class NewItemModalComponent {
   }
 
   onCancel() {
-    // reset values
-    this.title = '';
-    this.description = '';
+    this.resetForm();
 
-    // reset validity
-    this.titleInput.reset();
-    this.descriptionInput.reset();
-
-
-    this.cancelModal.emit(true);
+    this.cancelModal.emit();
   }
 
 }

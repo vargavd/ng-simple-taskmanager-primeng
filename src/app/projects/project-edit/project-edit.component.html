@@ -46,7 +46,26 @@
   ></app-tag-list>
 </div>
 
-<h2 class="mt-7">NOT STARTED TASKS</h2>
+<app-new-item-modal
+  [modalVisible]="newTaskModalVisible"
+  (closeModal)="newTaskModalVisible = false"
+  (cancelModal)="newTaskModalVisible = false"
+  itemType="TASK"
+  [projectId]="project.id"
+></app-new-item-modal>
+
+<div class="flex justify-content-between align-items-center mt-7">
+  <h2>NOT STARTED TASKS</h2>
+
+  <p-button
+    icon="pi pi-plus"
+    label="Add Task"
+    class="ml-2"
+    styleClass="p-button-sm"
+    (click)="clickOnAddTask()"
+  >
+  </p-button>
+</div>
 <app-task-list [tasks]="project.getNotStartedTasks()"></app-task-list>
 
 <h2 class="mt-7">IM PROGRESS TASKS</h2>

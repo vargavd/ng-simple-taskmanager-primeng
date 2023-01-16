@@ -48,6 +48,19 @@ export class DataService {
 
     return nextProjectId;
   }
+  public addTask(projectId: number, title: string, description: string, status: TASK_STATUS = TASK_STATUS.NOT_STARTED) {
+    const project = this.projects.find(p => p.id === projectId);
+
+    project.tasks.push(new Task(
+      this.nextTaskId++, // id
+      projectId, // project id
+      title, // title
+      description, // description
+      0, // minutesTracked
+      status, // status
+      [] // tags
+    ));
+  }
 
   constructor() {
     for (let index = 0; index < 15; index++) {

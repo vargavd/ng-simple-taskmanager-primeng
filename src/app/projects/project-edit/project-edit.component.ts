@@ -16,10 +16,13 @@ import { Project } from 'src/app/helper/data';
 })
 export class ProjectEditComponent implements OnInit {
   project: Project;
+  newTaskModalVisible: boolean;
 
   constructor(private route: ActivatedRoute, private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
+    this.newTaskModalVisible = false;
+
     const projectId = +this.route.snapshot.params['projectId'];
 
     this.project = this.dataService.projects.find(p => p.id === projectId);
@@ -38,5 +41,8 @@ export class ProjectEditComponent implements OnInit {
   }
   clickOnBackToProject() {
     this.router.navigate(['projects', this.project.id]);
+  }
+  clickOnAddTask() {
+    this.newTaskModalVisible = true;
   }
 }
