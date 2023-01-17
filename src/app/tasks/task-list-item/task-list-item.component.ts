@@ -11,13 +11,10 @@ import { Task } from 'src/app/helper/data';
   styleUrls: ['./task-list-item.component.scss'],
 })
 export class TaskListItemComponent implements OnInit {
+  // INPUT - OUTPUT
   @Input() task: Task;
   @Output() deleteTask = new EventEmitter<{id: number, projectId: number, button: EventTarget}>();
 
-  constructor(private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   // DOM events
   clickOnDeleteButton(event: Event) {
@@ -25,6 +22,12 @@ export class TaskListItemComponent implements OnInit {
   }
   clickOnEdit() {
     this.router.navigate(['projects', this.task.projectId, 'tasks', this.task.id]);
+  }
+  
+
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
   }
   
 

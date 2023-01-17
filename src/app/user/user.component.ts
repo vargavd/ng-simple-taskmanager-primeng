@@ -25,12 +25,7 @@ export class UserComponent implements OnInit {
     this.user.devLevel = DEVELOPER_LEVEL[$event.value.toUpperCase()];
   };
 
-  constructor(private userService: UserService) { }
-
-  ngOnInit(): void {
-    this.user = { ...this.userService.user };
-  }
-
+  // DOM events
   onSave() {
     this.userService.setUser(
       this.user.userName, 
@@ -41,6 +36,14 @@ export class UserComponent implements OnInit {
       this.user.about
     );
   }
+
+  constructor(private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.user = { ...this.userService.user };
+  }
+
+  
 
   
   

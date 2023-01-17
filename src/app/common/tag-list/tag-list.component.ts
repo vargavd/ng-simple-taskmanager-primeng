@@ -4,6 +4,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 // DATA IMPORTS
 import { tags } from 'src/app/helper/data';
 
+
+/**
+ * This component for selecting tags for Projects or Tasks.
+ */
+
 @Component({
   selector: 'app-tag-list',
   templateUrl: './tag-list.component.html',
@@ -14,9 +19,19 @@ export class TagListComponent implements OnInit {
   @Input() selectedTags: string[];
   @Output() selectedTagsChanged = new EventEmitter<string[]>();
 
-  // DATA MODEL
+
+  // DATA
   tagStates = tags.map(tag => ({ tag, checked: false }));
 
+
+  // EVENTS
+  tagsChanged() {
+    this.selectedTagsChanged.emit(this.tagStates
+      .filter(tagState => tagState.checked)
+      .map(tagState => tagState.tag)
+    );
+  }
+  
   
   ngOnInit(): void {
     this.selectedTags.forEach(selectedTag => {
@@ -26,12 +41,5 @@ export class TagListComponent implements OnInit {
         tagState.checked = true;
       }
     });
-  }
-
-  tagsChanged() {
-    this.selectedTagsChanged.emit(this.tagStates
-      .filter(tagState => tagState.checked)
-      .map(tagState => tagState.tag)
-    );
   }
 }

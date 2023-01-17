@@ -12,7 +12,10 @@ import { DataService } from '../data.service';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
+  // DATA (MODEL)
   projects: Project[];
+
+  // UI MODEL
   newProjectModalVisible: boolean;
 
   constructor(private dataService: DataService) { }

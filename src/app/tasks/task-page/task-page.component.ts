@@ -19,9 +19,11 @@ export class TaskPageComponent implements OnInit {
   editedTask: Task;
   project: Project;
 
+
   // local references
   @ViewChild('addHours') addHoursInput: ElementRef;
   @ViewChild('addMinutes') addMinutesInput: ElementRef;
+
 
   // helper DOM functions
   getHours() {
@@ -29,18 +31,6 @@ export class TaskPageComponent implements OnInit {
   }
   getMinutes() {
     return this.editedTask.minutesTracked % 60;
-  }
-
-
-  constructor(private dataService:DataService, private route: ActivatedRoute, private router: Router) { }
-
-  ngOnInit(): void {
-    const projectId = +this.route.snapshot.params['projectId'];
-    const taskId = +this.route.snapshot.params['taskId'];
-
-    this.project = this.dataService.projects.find(p => p.id === projectId);
-
-    this.editedTask = this.project.tasks.find(task => task.id === taskId);
   }
 
   // DOM events
@@ -74,6 +64,18 @@ export class TaskPageComponent implements OnInit {
   }
   selectedTagsChanged(selectedTags: string[]) {
     this.editedTask.tags = selectedTags;
+  }
+
+
+  constructor(private dataService:DataService, private route: ActivatedRoute, private router: Router) { }
+
+  ngOnInit(): void {
+    const projectId = +this.route.snapshot.params['projectId'];
+    const taskId = +this.route.snapshot.params['taskId'];
+
+    this.project = this.dataService.projects.find(p => p.id === projectId);
+
+    this.editedTask = this.project.tasks.find(task => task.id === taskId);
   }
 
 

@@ -15,8 +15,22 @@ import { Project } from 'src/app/helper/data';
   styleUrls: ['./project-edit.component.scss']
 })
 export class ProjectEditComponent implements OnInit {
+  // DATA MODEl
   project: Project;
+
+  // UI MODEL
   newTaskModalVisible: boolean;
+
+  // DOM events
+  selectedTagsChanged(selectedTags: string[]) {
+    this.project.tags = selectedTags;
+  }
+  clickOnBackToProject() {
+    this.router.navigate(['projects', this.project.id]);
+  }
+  clickOnAddTask() {
+    this.newTaskModalVisible = true;
+  }
 
   constructor(private route: ActivatedRoute, private dataService: DataService, private router: Router) { }
 
@@ -35,14 +49,5 @@ export class ProjectEditComponent implements OnInit {
     });
   }
 
-  // DOM events
-  selectedTagsChanged(selectedTags: string[]) {
-    this.project.tags = selectedTags;
-  }
-  clickOnBackToProject() {
-    this.router.navigate(['projects', this.project.id]);
-  }
-  clickOnAddTask() {
-    this.newTaskModalVisible = true;
-  }
+  
 }

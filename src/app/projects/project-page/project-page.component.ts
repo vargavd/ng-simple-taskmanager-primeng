@@ -12,9 +12,18 @@ import { DataService } from 'src/app/data.service';
   styleUrls: ['./project-page.component.scss']
 })
 export class ProjectPageComponent implements OnInit {
+  // DATA MODEL
   project: Project;
   chartData: any;
   chartOptions: any;
+
+  // helper properties for template
+  taskStatuses = TASK_STATUS;
+
+  // DOM event handlers
+  clickOnEditProject() {
+    this.router.navigate(['projects', this.project.id, 'edit']);
+  }
 
   constructor(
     private dataService: DataService, 
@@ -62,11 +71,7 @@ export class ProjectPageComponent implements OnInit {
     };
   }
 
-  // DOM event handlers
-  clickOnEditProject() {
-    this.router.navigate(['projects', this.project.id, 'edit']);
-  }
+  
 
-  // helper properties for template
-  taskStatuses = TASK_STATUS;
+  
 }

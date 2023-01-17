@@ -12,15 +12,18 @@ import { Project } from 'src/app/helper/data';
   styleUrls: ['./project-list-item.component.scss']
 })
 export class ProjectListItemComponent implements OnInit {
+  // DATA MODEL
   @Input() project: Project;
+
+  // DOM EVENTS
+  clickOnProjectCard() {
+    this.router.navigate(['/projects', this.project.id]);
+  }
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  // UI EVENTS
-  clickOnProjectCard() {
-    this.router.navigate(['/projects', this.project.id]);
-  }
+  
 }

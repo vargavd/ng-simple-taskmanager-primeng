@@ -13,9 +13,8 @@ import { DataService } from '../data.service';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
+  // DATA MODEL
   tasks: Task[] = [];
-
-  constructor(private dataService: DataService) { }
 
   // public funcs
   removeTask(taskId: number) {
@@ -23,6 +22,8 @@ export class TasksComponent implements OnInit {
 
     this.tasks.splice(taskIndex, 1);
   }
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.dataService.projects.forEach(project => {

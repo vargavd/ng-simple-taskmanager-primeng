@@ -5,8 +5,12 @@ import { Router } from '@angular/router';
 
 // CUSTOM SERVICES
 import { DataService } from 'src/app/data.service';
-import { Project, Task } from 'src/app/helper/data';
 
+
+/**
+ * A modal for get Title and Description from the user.
+ * Used before creating a Project or Task.
+ */
 
 @Component({
   selector: 'app-new-item-modal',
@@ -14,21 +18,26 @@ import { Project, Task } from 'src/app/helper/data';
   styleUrls: ['./new-item-modal.component.scss']
 })
 export class NewItemModalComponent {
+  // DATA (MODEL)
   title: string;
   description: string;
-  tags: string[];
 
+
+  // INPUTS
   @Input() modalVisible: boolean;
   @Input() itemType: 'TASK' | 'PROJECT';
   @Input() projectId: number; // in case the new item is a task
   @Output() cancelModal = new EventEmitter<void>();
   @Output() closeModal = new EventEmitter<void>();
 
+
+  // DOM REFERENCES
   @ViewChild('titleInput') titleInput: NgModel;
   @ViewChild('descriptionInput') descriptionInput: NgModel;
 
+  
   // private helper funcs
-  resetForm() {
+  private resetForm() {
     // reset values
     this.title = '';
     this.description = '';
@@ -38,24 +47,16 @@ export class NewItemModalComponent {
     this.descriptionInput.reset();
   }
 
-  constructor(
-    private dataService: DataService,
-    private router: Router
-  ) { 
-    this.title = '';
-    this.description = '';
-    this.tags = [];
-  }
 
+  // DOM EVENTS
   onSave() {
-    // validation if they are untouched
+    // run validation even if they are untouched
     if (!this.title || !this.description) {
       this.titleInput.control.markAsTouched();
       this.descriptionInput.control.markAsTouched();
       
       return;
     }
-
     
     if (this.itemType === 'TASK') {
       // ADDING TASK
@@ -66,17 +67,26 @@ export class NewItemModalComponent {
       this.closeModal.emit();
     } else {
       // ADDING PROJECT
-      const projectId = this.dataService.addProject(this.title, this.description, this.tags);
+      const projectId = this.dataService.addProject(this.title, this.description, []);
 
       this.router.navigate(['/projects', projectId, 'edit']);
     }
-    
   }
-
   onCancel() {
     this.resetForm();
 
     this.cancelModal.emit();
   }
+  
+
+  constructor(
+    private dataService: DataService,
+    private router: Router
+  ) { 
+    this.title = '';
+    this.description = '';
+  }
+
+  
 
 }

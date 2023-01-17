@@ -16,13 +16,9 @@ import { DataService } from 'src/app/data.service';
   styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent implements OnInit {
+  // INTPUT - OUTPUT
   @Input() tasks: Task[];
   @Output() taskDeletedEvent = new EventEmitter<number>();
-
-  constructor(private confirmationService: ConfirmationService, private dataService: DataService) { }
-
-  ngOnInit(): void {
-  }
 
   // DOM events
   deleteTaskHandler(event: {id: number, projectId: number, button: EventTarget}) {
@@ -46,6 +42,13 @@ export class TaskListComponent implements OnInit {
       reject: () => {
           //reject action
       }
-  });
+    });
   }
+
+  constructor(private confirmationService: ConfirmationService, private dataService: DataService) { }
+
+  ngOnInit(): void {
+  }
+
+  
 }

@@ -21,10 +21,6 @@ export class HeaderComponent implements OnInit {
   userMenu: MenuItem[];
   user: UserModel;
 
-  constructor(
-    private router: Router, 
-    private userService: UserService
-  ) {}
 
   // private funcs
   private clickOnLogout() {
@@ -35,7 +31,22 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  // INIT
+  
+  // DOM events
+  clickOnLink(path: string) {
+    this.router.navigate([path]);
+  }
+  clickOnLogin() {
+    this.userService.login();
+  }
+
+
+  constructor(
+    private router: Router, 
+    private userService: UserService
+  ) {}
+
+
   ngOnInit(): void {
     this.userMenu = [
       { label: 'Profile', icon: 'pi pi-info-circle', routerLink: ['/user'] },
@@ -46,13 +57,6 @@ export class HeaderComponent implements OnInit {
     this.user = this.userService.user;
   }
 
-  // DOM events
-  clickOnLink(path: string) {
-    this.router.navigate([path]);
-  }
-  clickOnLogin() {
-    this.userService.login();
-  }
 
   // for debugging
   console = console;
