@@ -1,5 +1,7 @@
 # Project-task manager written in Angular with PrimeNG component library
 
+Live Demo: https://ng-simple-task-manager.web.app/
+
 A project-task manager written in angular, entirely for learning purposes.
 
 - Typescript
